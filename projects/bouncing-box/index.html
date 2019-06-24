@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bouncing Box</title>
+	<script src="jquery.min.js"></script>
+	
+
+<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+
+	<!-- BEGIN CSS -->
+	<style>
+		/* TODO 1 */
+* {
+			-webkit-user-select: none; /* Safari */        
+			-moz-user-select: none; /* Firefox */
+			-ms-user-select: none; /* IE10+/Edge */
+			user-select: none; /* Standard */	
+			   font-family: 'SomeTimeLaterRegular'; 
+   font-weight: normal; 
+   font-style: normal; 
+}
+		.box {
+			width: 70px;
+			height: 70px;
+			/*background-color: black;*/
+			font-size: 300%;
+			text-align: center;
+			display: block;
+			position: absolute;
+			top: 100px;
+			left: 0px;
+			border: dotted;
+			border-color: #eee;
+			border-radius: 100px;
+			
+		}
+		h1 {
+			color: #fff;
+			text-align: center;
+		}
+body {
+    /* page background */
+    background-image: url(/images/back.svg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: bottom;
+background-color: #000;
+
+
+
+}
+
+a:link {
+  color: #eee;
+}
+
+/* visited link */
+a:visited {
+  color: #eee;
+}
+
+/* mouse over link */
+a:hover {
+  color: #eee;
+}
+
+/* selected link */
+a:active {
+  color: #eee;
+}
+	</style>
+<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/some-time-later" type="text/css"/>
+</head>
+<body class="board">
+	<!-- HTML for the box -->
+	<h1>Bouncing Box (Ball)</h1>
+	<a href="/portfolio.html">Back</a>
+	<div class="box">?</div>
+
+	<!-- BEGIN JAVASCRIPT -->
+	<script>
+		(function(){
+			'use strict'
+			/* global jQuery */
+
+			// jQuery stuff setup for you
+			var box = jQuery('.box');
+			var body = jQuery('body')
+			var boardWidth = (jQuery('.board').width() - 80);
+			var boardHeight = (jQuery(window).height() - 100); 
+
+			// TODO 2 - Variable declarations 
+			var position;       // reference for the x-coordinate of our box
+			var points;         // reference for the points displayed on the box
+			var speed;          // reference for how fast the box moves
+			var direction       // reference for the direction the box is moving: 1 means right, -1 means left
+
+			position = Math.random() * boardWidth;
+			points = 0;
+			speed = 1;
+			direction = 1;
+			
+			var vPos;
+			var vDir;
+			var vSpeed;
+			
+			vPos = Math.random() * boardHeight;
+			vDir = 1;
+			vSpeed = 1;
+			
+			box.css('left', position);      // moves the box to the x-coordinate of <position>
+			box.css('top', vPos);
+			box.text(points);               // changes the text of the box to display the value of <points>
+			
+			function update() {
+				// TODO 3 / 6 / 7 / 8
+				
+				position += speed * direction;    // increment position by speed on every update
+				vPos += vSpeed * vDir;
+				//console.log("new position: " + position);
+				//console.log("new position: " + vPos);
+				
+				//QUESTION 1: After 200 milliseconds the position of the box will be 40
+			    if(position > boardWidth) {
+				        //console.log("Right Wall Hit");
+				        direction = -1;
+				        //console.log(direction);
+				    }
+			    if(position < 0 ) {
+				        //console.log("Left Wall Hit");
+				        direction = 1;
+				        //console.log(direction);
+				    }
+			    if(vPos > boardHeight) {
+				        //console.log("Bottom Wall Hit");
+				        vDir = -1;
+				        //console.log(direction);
+				    }
+				if(vPos < 0) {
+				        //console.log("Top Wall Hit");
+				        vDir = 1;
+				        //console.log(direction);
+					
+				}
+				box.css('top', vPos);
+				box.css('left', position);      // set the 'left' CSS property of the box to the new value of position
+				box.css('border-color', "rgb(" + (vPos / 5) + " , " + (position / 10) + ", " + vPos / 2 + ")");
+				box.css('color', "rgb(" + (vPos /2 ) + " , " + vPos / 2 + ", " + (position*2) + ")");
+				body.css('background-color', "rgb(" + vPos / 3.5  + " , " + position / 5 + ", " + vPos / 5.2 + ")");
+				//box.css('top', ((vPos % 2) * 100));
+				//box.css('height', position;
+
+
+				
+			};
+			
+			
+
+
+			
+			function handleBoxClick() {
+				// TODO 4 / 5
+				points += 1;           // increase the point total
+				box.text(points);      // update the new points total displayed by the box
+				position = Math.random() * boardWidth;        // reset the position of the box to 0
+				vPos = Math.random() * boardHeight;
+				speed = Math.floor(Math.random() * 6);    // increase the speed of the box on every click
+				vSpeed = Math.floor(Math.random() * 6);
+				var redC = 100 + Math.random() * 155;
+				var blueC = 100 + Math.random() * 125;
+				var greenC = 100 + Math.random() * 125;
+
+
+				//Math.floor(Math.random() * 255
+			};
+			
+			
+			//this executes the update function code every 50 milliseconds
+			setInterval(update, 10);
+			// this executes the handleBoxClick function code every time the box is clicked on
+			box.on('click', handleBoxClick);
+
+		})();
+	</script>
+</body>
+</html>
