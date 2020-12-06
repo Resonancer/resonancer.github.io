@@ -1,92 +1,18 @@
 body {
-    /* page background */
-    background-image: url(/images/back.svg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: bottom;
-    background-color: #000;
-    color: rgb(0, 0, 0);
-    padding: 10px;
-    font-family: arial;
-}
-header {
-    font-size: 1.5em;
-    font-weight: bold;
-}
-#all-contents {
-    max-width: 800px;
-    margin: auto;
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-family: monospace;
 }
 
-
-nav {
-    /* navigation menu */
-    background: #000;
-    margin: 0 auto;
-    margin-bottom: 20px;
-    display: flex;
-    padding: 10px;
-    border-radius: 10px;
-    border: solid;
-    border-color: #eee;
-}
-nav header {
-    display: flex;
-    align-items: center;
-    /* navigation menu text */
-    color: #eee;
-    flex: 1;
-}
-nav ul {
-    list-style-image: none;
-}
-nav li {
-    display: inline-block;
-    padding: 0 10px;
-}
-nav a {
-    text-decoration: none;
-    color: #000;
-}
-
-
-main {
-    /* main container area beneath menu */
-    background: #000;
-    display: flex;
-    color: #eee;
-}
-.sidebar {
-    margin-right: 25px;
-    padding: 10px;
-}
-.sidebar img {
-    width: 200px;
-    border-radius: 10px;
-}
-.content {
-    flex: 1;
-    padding: 15px;
-}
-.interests header {
-    font-size: 1.25em;
+a:visited {
+    color: white;
 }
 
 a:link {
-  color: #eee;
+    color: white;
 }
 
-/* visited link */
-a:visited {
-  color: #eee;
-}
-
-/* mouse over link */
 a:hover {
-  color: #eee;
-}
-
-/* selected link */
-a:active {
-  color: #eee;
+    color: cyan;
 }
