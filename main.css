@@ -1,5 +1,9 @@
 body {
     background-color: black;
+    background-image: url('images/cm2-home-background.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right bottom;
     color: white;
     text-align: center;
     font-family: monospace;
@@ -19,5 +23,17 @@ a:link {
 }
 
 a:hover {
-    color: cyan;
+    color: black;
+    background-color: white;
+}
+
+a:active {
+    color: white;
+    background-color: black;
+}
+
+.main-content {
+    background-color: rgba(0,0,0,0.7);
+    padding: 2em;
+    border-radius: 0.7em;
 }
